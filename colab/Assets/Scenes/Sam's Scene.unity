@@ -593,7 +593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613515196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0307, z: 0.5719}
+  m_LocalPosition: {x: 0, y: 0.0307, z: 0.619}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1377,12 +1377,15 @@ MonoBehaviour:
   gunPoint: {fileID: 613515197}
   projectile: {fileID: 4316865309468223901, guid: b0ab0ad0b160a3e4d97bf52377d5db92,
     type: 3}
-  force: 6
+  force: 8
   fireRate: 2
   xSpread: 0.1
   ySpread: 0.1
   bulletsToShootAtOnce: 7
   canshoot: 0
+  shootSound: {fileID: 5154570874359604412, guid: 92bf68421ff8cc34bb86223187176a7c,
+    type: 3}
+  playerRb: {fileID: 277729143}
 --- !u!1 &2014540295
 GameObject:
   m_ObjectHideFlags: 0
