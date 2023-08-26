@@ -16,6 +16,8 @@ public class Gun : MonoBehaviour
 
     public bool canshoot;
 
+    public bool automatic;
+
     public GameObject shootSound;
 
     public Rigidbody playerRb;
@@ -27,7 +29,11 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canshoot)
+        if (Input.GetMouseButtonDown(0) && canshoot && !automatic)
+        {
+            Shoot();
+        }
+        if (Input.GetMouseButton(0) && canshoot && automatic)
         {
             Shoot();
         }
