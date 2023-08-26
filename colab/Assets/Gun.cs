@@ -16,6 +16,10 @@ public class Gun : MonoBehaviour
 
     public bool canshoot;
 
+    public GameObject shootSound;
+
+    public Rigidbody playerRb;
+
     private void Start()
     {
         canshoot = true;
@@ -42,6 +46,8 @@ public class Gun : MonoBehaviour
             spread = gunPoint.transform.TransformDirection(spread);
             Vector3 direction = gunPoint.transform.forward + spread;
             rb.AddForce(direction * force, ForceMode.Impulse);
+            rb.velocity = rb.velocity + playerRb.velocity;
+            Instantiate(shootSound, gunPoint);
             bulletsShot++;
         }
     }
