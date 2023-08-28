@@ -335,6 +335,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyEffect: {fileID: 490863553365699805, guid: f2a7da7614ce8f04eb8846421dacdd1c,
     type: 3}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  rb: {fileID: 5767301808216371727}
