@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
 
     public GameObject shootSound;
 
+    public Recoil recoil;
     public Rigidbody playerRb;
 
     private void Start()
@@ -56,6 +57,7 @@ public class Gun : MonoBehaviour
             Instantiate(shootSound, gunPoint);
             bulletsShot++;
         }
+        recoil.StartRecoil(fireRate);
     }
 
     private void ResetShoot()
