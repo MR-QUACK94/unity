@@ -20,9 +20,11 @@ public class Projectile : MonoBehaviour
                 Rigidbody hitRb = collision.transform.GetComponent<Rigidbody>();
                 Vector3 direction = collision.contacts[collision.contacts.Length - 1].point - hitRb.velocity.normalized;
                 float momentum = rb.velocity.magnitude * rb.mass;
+                Debug.Log(momentum);
                 float force = momentum / hitRb.mass;
+                force = force / 4f;
                 Vector3 interpolatedDirection = Vector3.Lerp(direction.normalized * force, hitRb.velocity, 0.5f);
-                hitRb.AddForce(interpolatedDirection, ForceMode.Impulse);
+                hitRb.AddForce(direction * force, ForceMode.Impulse);
             }
             Destroy(gameObject);
         }
