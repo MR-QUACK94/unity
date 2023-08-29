@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3d035cee65e402478c058f143ad8880, type: 2}
+  - {fileID: 2100000, guid: b9891e88569f27748907893a12e319a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -336,3 +336,4 @@ MonoBehaviour:
   destroyEffect: {fileID: 490863553365699805, guid: f2a7da7614ce8f04eb8846421dacdd1c,
     type: 3}
   rb: {fileID: 5767301808216371727}
+  maxLifeSpan: 30
