@@ -2535,20 +2535,9 @@ PrefabInstance:
       objectReference: {fileID: 126365332}
     - target: {fileID: 6762239446600889949, guid: c371b589bd064b142800b958afd21b2f,
         type: 3}
-      propertyPath: fireRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6762239446600889949, guid: c371b589bd064b142800b958afd21b2f,
-        type: 3}
       propertyPath: playerRb
       value: 
       objectReference: {fileID: 277729143}
-    - target: {fileID: 6762239446600889949, guid: c371b589bd064b142800b958afd21b2f,
-        type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 4316865309468223901, guid: ff45cc3aaaa56ac469ff2214e3f6d34a,
-        type: 3}
     - target: {fileID: 6762239446600889950, guid: c371b589bd064b142800b958afd21b2f,
         type: 3}
       propertyPath: m_RootOrder
