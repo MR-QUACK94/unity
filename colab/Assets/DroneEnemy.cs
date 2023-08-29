@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneEnemy : MonoBehaviour
+public class DroneEnemy : MonoBehaviour, IDamageable
 {
     [Header("References")]
     public Rigidbody rb;
@@ -31,9 +31,19 @@ public class DroneEnemy : MonoBehaviour
     public float shootAngle;
     public float shootForce;
     public float bulletsToShootAtOnce;
+    public int damage;
 
     [Header("Move Settings")]
     public float maxRangeMove;
+
+    public int health;
+    public int maxHealth;
+    public Material glowMat;
+    public Material deadMat;
+    private int[] matIndexes;
+    private bool alive;
+    public GameObject deathEffect;
+    public float deathScaleDownSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -41,18 +51,25 @@ public class DroneEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         canShoot = true;
         shouldMove = true;
+        alive = true;
         randomPos = transform.position + new Vector3(Random.Range(-maxRangeMove, maxRangeMove), 0f, Random.Range(-maxRangeMove, maxRangeMove));
         flyHeight = flyHeight + Random.Range(-flyHeightRandomOffset, flyHeightRandomOffset);
+        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(health <= 0 && alive)
+        {
+            Die();
+        }
     }
 
     private void FixedUpdate()
     {
+        if (!alive) return;
+
         if (Physics.Raycast(transform.position, Vector3.down, flyHeight))
         {
             rb.AddForce(Vector3.up * upForce, ForceMode.Force);
@@ -92,6 +109,7 @@ public class DroneEnemy : MonoBehaviour
         {
             GameObject bullet = Instantiate(projectile, gunPoint.transform.position, Quaternion.Euler(gunPoint.transform.forward));
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            bullet.GetComponent<Projectile>().damage = damage;
             Vector3 direction = gunPoint.transform.forward;
             rb.AddForce(direction * shootForce, ForceMode.Impulse);
             //Instantiate(shootSound, gunPoint);
@@ -136,7 +154,42 @@ public class DroneEnemy : MonoBehaviour
         {
             randomPos = transform.position + new Vector3(Random.Range(-maxRangeMove, maxRangeMove), 0f, Random.Range(-maxRangeMove, maxRangeMove));
         }
+    }
 
-        Debug.Log(distance);
+    public void Damage(int _damage)
+    {
+        health = health - _damage;
+        Debug.Log(health);
+    }
+
+    void Die()
+    {
+        alive = false;
+        rb.constraints = RigidbodyConstraints.None;
+        MeshRenderer[] mrs = GetComponentsInChildren<MeshRenderer>();
+        Debug.Log(mrs.Length);
+        if (glowMat != null && deadMat != null)
+        {
+            foreach (MeshRenderer mr in mrs)
+            {
+                Debug.Log(mr.transform.name);
+                for (int i = 0; i < mr.sharedMaterials.Length; i++)
+                {
+                    Debug.Log(mr.sharedMaterials[i] + " || " + glowMat);
+                    if (mr.sharedMaterials[i] == glowMat)
+                    {
+                        Debug.Log("Glow Mat Found");
+                        var materialsCopy = mr.materials;
+                        materialsCopy[i] = deadMat;
+                        mr.materials = materialsCopy;
+                    }
+                }
+            }
+        }
+        if(deathEffect != null)
+        {
+            Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 10f);
+        }
+        transform.localScale = Vector3.zero;
     }
 }

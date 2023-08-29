@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Turret : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Turret : MonoBehaviour
     public Transform pitchObject;
     public bool canShoot;
     public float shootAngle;
+    public int damage;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +73,7 @@ public class Turret : MonoBehaviour
         {
             GameObject bullet = Instantiate(projectile, gunPoint.transform.position, Quaternion.Euler(gunPoint.transform.forward));
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            bullet.GetComponent<Projectile>().damage = damage;
             Vector3 direction = gunPoint.transform.forward;
             rb.AddForce(direction * shootForce, ForceMode.Impulse);
             //Instantiate(shootSound, gunPoint);

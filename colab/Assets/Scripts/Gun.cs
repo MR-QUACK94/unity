@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public float fireRate;
     public float xSpread;
     public float ySpread;
+    public int damage;
 
     public float bulletsToShootAtOnce;
 
@@ -49,6 +50,7 @@ public class Gun : MonoBehaviour
         {
             GameObject bullet = Instantiate(projectile, gunPoint.transform.position, Quaternion.Euler(gunPoint.transform.forward));
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            bullet.GetComponent<Projectile>().damage = damage;
             Vector3 spread = new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), 0f);
             spread = gunPoint.transform.TransformDirection(spread);
             Vector3 direction = gunPoint.transform.forward + spread;
