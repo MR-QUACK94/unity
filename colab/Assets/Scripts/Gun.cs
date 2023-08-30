@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public float fireRate;
     public float xSpread;
     public float ySpread;
+    public int damage;
 
     public float bulletsToShootAtOnce;
 
@@ -20,12 +21,27 @@ public class Gun : MonoBehaviour
 
     public GameObject shootSound;
 
+    public Camera cam;
+
     public Recoil recoil;
     public Rigidbody playerRb;
+
+    public Vector3 adsPos;
+    public bool ads;
+    private bool canAds;
+    private Vector3 startPos;
+    [Range(0f, 1f)]
+    public float adsSpreadMultiplyer;
+    public float adsZoom;
+    private float startFov;
+    public bool hideCrosshair;
+    public GameObject crosshair;
 
     private void Start()
     {
         canshoot = true;
+        startPos = transform.localPosition;
+        startFov = cam.fieldOfView;
     }
 
     private void Update()
@@ -38,6 +54,19 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
+
+        if(ads && Input.GetMouseButtonDown(1))
+        {
+            transform.localPosition = adsPos;
+            cam.fieldOfView = startFov / adsZoom;
+            crosshair.SetActive(!hideCrosshair);
+        }
+        if(ads && Input.GetMouseButtonUp(1))
+        {
+            transform.localPosition = startPos;
+            cam.fieldOfView = startFov;
+            crosshair.SetActive(true);
+        }
     }
 
     private void Shoot()
@@ -49,6 +78,7 @@ public class Gun : MonoBehaviour
         {
             GameObject bullet = Instantiate(projectile, gunPoint.transform.position, Quaternion.Euler(gunPoint.transform.forward));
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            bullet.GetComponent<Projectile>().damage = damage;
             Vector3 spread = new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), 0f);
             spread = gunPoint.transform.TransformDirection(spread);
             Vector3 direction = gunPoint.transform.forward + spread;

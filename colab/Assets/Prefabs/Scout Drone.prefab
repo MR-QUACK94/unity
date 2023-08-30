@@ -145,7 +145,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -5243988174349660497, guid: ec0f5babb15e555469f68b55a2f0a340, type: 3}
-  - {fileID: -4695766186861778205, guid: ec0f5babb15e555469f68b55a2f0a340, type: 3}
+  - {fileID: 2100000, guid: b9891e88569f27748907893a12e319a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -569,7 +569,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -5243988174349660497, guid: ec0f5babb15e555469f68b55a2f0a340, type: 3}
-  - {fileID: -4695766186861778205, guid: ec0f5babb15e555469f68b55a2f0a340, type: 3}
+  - {fileID: 2100000, guid: b9891e88569f27748907893a12e319a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -683,7 +683,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7576516557496731005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -12}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -723,26 +723,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   targetObject: {fileID: 0}
-  speed: 0
+  speed: 100
   flyHeight: 10
-  flyHeightRandomOffset: 0
+  flyHeightRandomOffset: 2
   upForce: 400
-  torqueForce: 10
+  torqueForce: 20
   maxRollAngle: 8
-  centerSpeed: 0.8
-  maxSpeed: 0
+  centerSpeed: 0.9
+  maxSpeed: 15
   shouldMove: 0
   timeBetweenMoves: 0
   randomPos: {x: 0, y: 0, z: 0}
-  maxAnglularVelocity: 0
-  fireRate: 2
+  maxAnglularVelocity: 5
+  fireRate: 4
   projectile: {fileID: 4316865309468223901, guid: ff45cc3aaaa56ac469ff2214e3f6d34a,
     type: 3}
   gunPoint: {fileID: 7576516556611714494}
   shootAngle: 25
   shootForce: 10
   bulletsToShootAtOnce: 1
-  maxRangeMove: 0
+  damage: 0
+  maxRangeMove: 5
+  health: 0
+  maxHealth: 50
+  glowMat: {fileID: 2100000, guid: b9891e88569f27748907893a12e319a8, type: 2}
+  deadMat: {fileID: 2100000, guid: c154a44945e5f1a4c829c13d10ee1972, type: 2}
+  deathEffect: {fileID: 725843123425648223, guid: 5520ebb22aea89640a2a4a9d3408ef9e,
+    type: 3}
 --- !u!1 &7576516557978917625
 GameObject:
   m_ObjectHideFlags: 0
