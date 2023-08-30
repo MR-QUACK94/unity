@@ -21,12 +21,27 @@ public class Gun : MonoBehaviour
 
     public GameObject shootSound;
 
+    public Camera cam;
+
     public Recoil recoil;
     public Rigidbody playerRb;
+
+    public Vector3 adsPos;
+    public bool ads;
+    private bool canAds;
+    private Vector3 startPos;
+    [Range(0f, 1f)]
+    public float adsSpreadMultiplyer;
+    public float adsZoom;
+    private float startFov;
+    public bool hideCrosshair;
+    public GameObject crosshair;
 
     private void Start()
     {
         canshoot = true;
+        startPos = transform.localPosition;
+        startFov = cam.fieldOfView;
     }
 
     private void Update()
@@ -38,6 +53,19 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0) && canshoot && automatic)
         {
             Shoot();
+        }
+
+        if(ads && Input.GetMouseButtonDown(1))
+        {
+            transform.localPosition = adsPos;
+            cam.fieldOfView = startFov / adsZoom;
+            crosshair.SetActive(!hideCrosshair);
+        }
+        if(ads && Input.GetMouseButtonUp(1))
+        {
+            transform.localPosition = startPos;
+            cam.fieldOfView = startFov;
+            crosshair.SetActive(true);
         }
     }
 

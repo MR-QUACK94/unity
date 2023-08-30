@@ -172,16 +172,23 @@ MonoBehaviour:
     type: 3}
   force: 8
   fireRate: 3
-  xSpread: 0.1
-  ySpread: 0.1
-  damage: 5
+  xSpread: 0.065
+  ySpread: 0.065
+  damage: 7
   bulletsToShootAtOnce: 7
   canshoot: 0
   automatic: 0
   shootSound: {fileID: 5154570874359604412, guid: 92bf68421ff8cc34bb86223187176a7c,
     type: 3}
+  cam: {fileID: 0}
   recoil: {fileID: 6762239446600889948}
   playerRb: {fileID: 0}
+  adsPos: {x: 0, y: 0, z: 0}
+  ads: 0
+  adsSpreadMultiplyer: 0
+  adsZoom: 0
+  hideCrosshair: 0
+  crosshair: {fileID: 0}
 --- !u!114 &6762239446600889948
 MonoBehaviour:
   m_ObjectHideFlags: 0
