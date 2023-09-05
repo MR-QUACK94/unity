@@ -117,11 +117,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && currentJumps < maxJumps-1 && lastJumpTime + doubleJumpTapCooldown <= Time.time)
+        if(Input.GetKeyDown(jumpKey) && readyToJump && grounded /*&& currentJumps < maxJumps-1 && lastJumpTime + doubleJumpTapCooldown <= Time.time*/)
         {
             readyToJump = false;
-            currentJumps += 1;
-            lastJumpTime = Time.time;
+            //currentJumps += 1;
+            //lastJumpTime = Time.time;
 
             Jump();
 

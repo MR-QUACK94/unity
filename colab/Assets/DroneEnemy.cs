@@ -159,7 +159,7 @@ public class DroneEnemy : MonoBehaviour, IDamageable
     public void Damage(int _damage)
     {
         health = health - _damage;
-        Debug.Log(health);
+        //Debug.Log(health);
     }
 
     void Die()
@@ -167,29 +167,34 @@ public class DroneEnemy : MonoBehaviour, IDamageable
         alive = false;
         rb.constraints = RigidbodyConstraints.None;
         MeshRenderer[] mrs = GetComponentsInChildren<MeshRenderer>();
-        Debug.Log(mrs.Length);
-        if (glowMat != null && deadMat != null)
-        {
-            foreach (MeshRenderer mr in mrs)
-            {
-                Debug.Log(mr.transform.name);
-                for (int i = 0; i < mr.sharedMaterials.Length; i++)
-                {
-                    Debug.Log(mr.sharedMaterials[i] + " || " + glowMat);
-                    if (mr.sharedMaterials[i] == glowMat)
-                    {
-                        Debug.Log("Glow Mat Found");
-                        var materialsCopy = mr.materials;
-                        materialsCopy[i] = deadMat;
-                        mr.materials = materialsCopy;
-                    }
-                }
-            }
-        }
+        //Debug.Log(mrs.Length);
+        //if (glowMat != null && deadMat != null)
+        //{
+        //    foreach (MeshRenderer mr in mrs)
+        //    {
+        //        //Debug.Log(mr.transform.name);
+        //        for (int i = 0; i < mr.sharedMaterials.Length; i++)
+        //        {
+        //            //Debug.Log(mr.sharedMaterials[i] + " || " + glowMat);
+        //            if (mr.sharedMaterials[i] == glowMat)
+        //            {
+        //                Debug.Log("Glow Mat Found");
+        //                var materialsCopy = mr.materials;
+        //                materialsCopy[i] = deadMat;
+        //                mr.materials = materialsCopy;
+        //            }
+        //        }
+        //    }
+        //}
         if(deathEffect != null)
         {
             Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 10f);
         }
         transform.localScale = Vector3.zero;
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }

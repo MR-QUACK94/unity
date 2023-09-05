@@ -78,7 +78,8 @@ public class Gun : MonoBehaviour
         {
             GameObject bullet = Instantiate(projectile, gunPoint.transform.position, Quaternion.Euler(gunPoint.transform.forward));
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            bullet.GetComponent<Projectile>().damage = damage;
+            if(bullet.GetComponent<Projectile>() != null ) { bullet.GetComponent<Projectile>().damage = damage; }
+            if (bullet.GetComponent<ExplosiveProjectile>() != null) { bullet.GetComponent<ExplosiveProjectile>().damage = damage; }
             Vector3 spread = new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), 0f);
             spread = gunPoint.transform.TransformDirection(spread);
             Vector3 direction = gunPoint.transform.forward + spread;
