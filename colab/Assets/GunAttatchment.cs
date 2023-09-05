@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class GunAttatchment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool overrideAdsPos;
+    public Vector3 adsPos;
+    public bool overrideAdsZoom;
+    public float adsZoom;
+    public bool recoilOverride;
+    public float minRecoil;
+    public float maxRecoil;
+    public float minRecoilAngle;
+    public float maxRecoilAngle;
 }
+

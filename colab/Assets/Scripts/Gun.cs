@@ -28,6 +28,7 @@ public class Gun : MonoBehaviour
 
     public Vector3 adsPos;
     public bool ads;
+    public bool isAds;
     private bool canAds;
     private Vector3 startPos;
     [Range(0f, 1f)]
@@ -60,12 +61,14 @@ public class Gun : MonoBehaviour
             transform.localPosition = adsPos;
             cam.fieldOfView = startFov / adsZoom;
             crosshair.SetActive(!hideCrosshair);
+            isAds = true;
         }
         if(ads && Input.GetMouseButtonUp(1))
         {
             transform.localPosition = startPos;
             cam.fieldOfView = startFov;
             crosshair.SetActive(true);
+            isAds = false;
         }
     }
 
@@ -81,6 +84,7 @@ public class Gun : MonoBehaviour
             if(bullet.GetComponent<Projectile>() != null ) { bullet.GetComponent<Projectile>().damage = damage; }
             if (bullet.GetComponent<ExplosiveProjectile>() != null) { bullet.GetComponent<ExplosiveProjectile>().damage = damage; }
             Vector3 spread = new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), 0f);
+            if(isAds) spread = spread * adsSpreadMultiplyer;
             spread = gunPoint.transform.TransformDirection(spread);
             Vector3 direction = gunPoint.transform.forward + spread;
             rb.AddForce(direction * force, ForceMode.Impulse);

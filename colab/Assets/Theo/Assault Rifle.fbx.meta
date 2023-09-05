@@ -3,7 +3,42 @@ guid: 51cc3c41f17ca074fa9826d693ed5d44
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black.003
+    second: {fileID: 2100000, guid: f6f898edd49fbcb40bea4be0365599ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue_Rifle
+    second: {fileID: 2100000, guid: d7dbbc3bc2512364eb99a361436c6a62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Copper.001
+    second: {fileID: 2100000, guid: 5728759649faa7c409e057c49725f0b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grey_new
+    second: {fileID: 2100000, guid: 84121afd99d67524c9007ea481ddea96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light Blue
+    second: {fileID: 2100000, guid: 7509fc60c04142f499f9d64c0fa20c16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silver.003
+    second: {fileID: 2100000, guid: fc70ddc66d4704d409ecc115eb45048a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100000, guid: 53f93920828e7c049b7cc6ebfb9fe52d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
